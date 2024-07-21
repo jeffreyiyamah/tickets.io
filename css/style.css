@@ -33,6 +33,6 @@ body,html{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15vh;
+    height: 25vh;
     font-size: 24px;
 }
