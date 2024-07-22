@@ -23,10 +23,10 @@ body,html{
     
 }
 .navlinks li{
-    margin-right: 30px;
+    margin-right: 3%;
 }
 .navlinks button{
-    margin-right: 30px;
+    margin-right: 3%;
 }
 .navlinks li a{
     text-decoration: none;
@@ -39,4 +39,17 @@ body,html{
     align-items: center;
     height: 25vh;
     font-size: 24px;
+}
+.body-text{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
