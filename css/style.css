@@ -5,6 +5,9 @@ body {
     margin: 0px;
     padding: 0;
     background: linear-gradient(100deg, #6e8efb, #a777e3);
+    height: 100vh;
+    
+    
 }
 nav {
     display: flex;
@@ -14,7 +17,7 @@ nav {
     width: 100%;
     position: fixed;
     top: 0;
-    z-index: 1000;
+    /* z-index: 1000; */
 }
 
 .logo a {
@@ -47,20 +50,23 @@ nav ul li a {
 nav ul{
     list-style-type: none;
     display: flex;
-    margin-right: 3%;
+    margin-right: 5%;
 }
-nav ul li{
-    margin-left: 20px;
-}
+
 nav ul li a{
     text-decoration: none;
     color: #ffffff;
 }
 
-.center{
-    text-align: center;
-    padding: 50px 0;
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    height: 120px;  
+    padding-top: 30px;  
 }
+
 .center h1{
     font-size: 48px;
     margin-bottom: 0px;
@@ -74,6 +80,11 @@ nav ul li a{
     max-width: 600px;
     margin: 0 auto;
 }
+.sponsored-by h2{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
 .mailing-list{
     display: flex;
     text-align: center;
@@ -85,6 +96,7 @@ nav ul li a{
 .mailing-list form{
     align-content: center;
     padding: 20px;
+    position: sticky;
 }
 .container input{
     padding: 5px;
@@ -98,3 +110,11 @@ nav ul li a{
     border-radius: 8px;
     cursor: pointer;
 }
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+        margin: 100px; 
+
+    .swiper-slide img {
+        max-height: 80px; /* Adjust image size for smaller screens */
+    }
