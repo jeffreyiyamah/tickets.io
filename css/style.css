@@ -17,7 +17,7 @@ nav {
     width: 100%;
     position: fixed;
     top: 0;
-    /* z-index: 1000; */
+
 }
 
 .logo a {
@@ -63,7 +63,7 @@ nav ul li a{
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    height: 120px;  
+    height: 150px;  
     padding-top: 30px;  
 }
 
@@ -80,6 +80,13 @@ nav ul li a{
     max-width: 600px;
     margin: 0 auto;
 }
+.sponsored-by {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .sponsored-by h2{
     display: flex;
     text-align: center;
@@ -114,7 +121,27 @@ nav ul li a{
     .main-content {
         padding: 20px;
         margin: 100px; 
-
-    .swiper-slide img {
-        max-height: 80px; /* Adjust image size for smaller screens */
     }
+    .swiper-slide img {
+        max-height: 80px; 
+    }
+}
+
+.footer-area {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px; 
+    width: 100%;
+}
+.sponsor-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.sponsored-by {
+    font-size: 24px; 
+    color: #ffffff; 
+}
+.swiper-container {
+    width: 100%;
+    text-align: center;
+}
