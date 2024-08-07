@@ -10,7 +10,6 @@ def get_geolocation(ip_address):
     response = requests.get(api_url)
     if response.status_code == 200:
         data = response.json()
-        print(data)
         return data.get('city', 'Unknown City')
     return "Unknown City"
 
