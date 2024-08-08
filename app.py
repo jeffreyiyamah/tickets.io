@@ -16,7 +16,6 @@ def get_geolocation(ip_address):
 
 @app.route('/main')
 def geolocation():
-    # user_ip = request.remote_addr
     user_ip = "8.8.8.8"
     city = get_geolocation(user_ip)
     if city:
