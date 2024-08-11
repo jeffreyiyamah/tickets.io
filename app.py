@@ -24,7 +24,8 @@ def get_events_by_parameters(api_key, venue=None, date=None, postal_code=None, k
         'postalCode': postal_code,
         'startDateTime': date + 'T00:00:00Z' if date else today,
         'endDateTime': date + 'T23:59:59Z' if date else today,
-        'locale': 'en-us'
+        'locale': 'en-us',
+        'classificationName' : 'Music'
     }
     params = {k: v for k, v in params.items() if v is not None}
     response = requests.get(api_url, params=params)
@@ -38,16 +39,17 @@ def get_events_by_parameters(api_key, venue=None, date=None, postal_code=None, k
 
 @app.route('/main', methods=['GET', 'POST'])
 def geolocation():
-    user_ip = "141.154.12.154"
-    city = get_geolocation(user_ip)
-    events = None
     if request.method == 'POST':
         city = request.form['city']
         date = request.form['date']
         keyword = request.form['keyword']
         events = get_events_by_parameters(API_KEY, postal_code=None, date=date, keyword=keyword)
-    return render_template('main_page.html', city=city, events=events)
-
+        return render_template('main_page.html', city=city, events=events)
+    else:
+        user_ip = "141.154.12.154"
+        city = get_geolocation(user_ip)
+        return render_template('main_page.html', city=city, events=None)
+    
 @app.route('/searchbar', methods=['GET'])
 def searchbar():
     return render_template('searchbar.html')
