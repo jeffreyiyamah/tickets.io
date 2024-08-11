@@ -10,28 +10,32 @@
     <h1 class="text-4xl md:text-5xl mb-10 text-center text-white font-bold "><a href="/">Tickets.io</a></h1>
     <div class="max-w-custom mx-auto bg-white p-2 rounded-lg shadow-lg flex items-center">
         <h2 class="text-lg font-bold text-indigo-800 mr-4">Find Your Favorite Concerts</h2>
-        <form class="flex flex-grow items-center">
-            <input type="text" placeholder="City or Zip Code" class="flex-1 p-2 border rounded mr-2">
-            <input type="date" class="flex-1 p-2 border rounded mr-2">
-            <input type="text" placeholder="Search by Artist, Event, or Venue" class="flex-1 p-2 border rounded mr-2">
+        <form class="flex flex-grow items-center" method="POST" action="/main">
+            <input type="text" name="city" placeholder="City or Zip Code" class="flex-1 p-2 border rounded mr-2" required>
+            <input type="date" name="date" class="flex-1 p-2 border rounded mr-2">
+            <input type="text" name="keyword" placeholder="Search by Artist, Event, or Venue" class="flex-1 p-2 border rounded mr-2">
             <button type="submit" class="bg-indigo-500 text-white py-2 px-6 rounded">Search</button>
         </form>
     </div>
-    <div class="max-w-custom mx-auto bg-white h-full pb-10 rounded-lg shadow-lg flex flex-col items-start mt-2">
-        <h2 class="text-lg font-bold text-indigo-800 text-center w-full">Today in {{ city }}</h2>
-        <div class="max-w-custom mx-auto bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
-            <h2 class="text-lg font-bold text-indigo-800 mb-4">Find Your Favorite Concerts</h2>
-            <form class="flex flex-col flex-grow items-center w-full">
-                <input type="text" placeholder="City or Zip Code" class="w-full p-4 border rounded mb-4">
-                <input type="date" class="w-full p-4 border rounded mb-4">
-                <input type="text" placeholder="Search by Artist, Event, or Venue" class="w-full p-4 border rounded mb-4">
-                <button type="submit" class="bg-indigo-500 text-white py-4 px-6 rounded">Search</button>
-            </form>
-        </div>
 
-        
+    <div class="max-w-custom mx-auto bg-white h-full pb-10 rounded-lg shadow-lg flex flex-col items-start mt-2">
+        <h2 class="text-lg font-bold text-indigo-800 text-center w-full mt-3">Events in {{ city }}</h2>
+         <!--Container-->
+        <div class="max-w-custom mx-auto bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
+            {% if events and events['_embedded'] and events['_embedded']['events'] %}
+                <ul>
+                    {% for event in events['_embedded']['events'] %}
+                        <li class="mb-4">
+                            <h3 class="text-indigo-600 font-bold">{{ event['name'] }}</h3>
+                            <p>{{ event['dates']['start']['localDate'] }} - {{ event['_embedded']['venues'][0]['name'] }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No events found.</p>
+            {% endif %}
+        </div>
+        <!-- End Container -->
     </div>
 </body>
-
-
 </html>
